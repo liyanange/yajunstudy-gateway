@@ -1,0 +1,15 @@
+zuul:
+  retryable: true
+  #只映射下面配置的服务 否则他会把其他没配置的服务也可以访问 加个服务名就行了
+  ignoredServices: '*'
+  #不暴露真实的ip
+  add-host-header: true
+  #过滤掉所有的header
+  sensitiveHeaders: "*"
+  routes:
+    #这个节点虽然可以随便写 但随便写的代价 下面或是指定URL或是指定 serviceId 那还不如就这么写写对
+    yajunstudyclient:
+      stripPrefix: false
+      path: /uua/**
+
+
